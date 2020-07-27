@@ -1,11 +1,9 @@
-@import-normalize;
-@import './settings';
-
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
 }
+
+@import-normalize;
+@import './settings';
 
 html {
   font-size: 62.5%;

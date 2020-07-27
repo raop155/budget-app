@@ -7,16 +7,14 @@ import './styles/styles.scss';
 import store from './store/store';
 
 import { addExpense } from './actions/expenses';
-import { setTextFilter } from './actions/filters';
+// import { setTextFilter } from './actions/filters';
 import selectExpenses from './selectors/expenses';
 
-store.dispatch(addExpense({ description: 'Water bill', note: 'note', amount: 50000, createAt: 0 }));
+store.dispatch(
+  addExpense({ description: 'Water bill', note: 'note', amount: 1000, createAt: 250 }),
+);
 store.dispatch(addExpense({ description: 'Gas bill', note: 'note', amount: 20000, createAt: 150 }));
-store.dispatch(setTextFilter('water'));
-
-setTimeout(() => {
-  store.dispatch(setTextFilter('rent'));
-}, 3000);
+store.dispatch(addExpense({ description: 'Rent', note: 'note', amount: 50, createAt: 52450 }));
 
 const state = store.getState();
 
