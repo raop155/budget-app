@@ -1,24 +1,26 @@
 import React, { useState, useEffect } from 'react';
-import moment from "moment"
-import "react-dates/lib/css/_datepicker.css"
-import { SingleDatePicker } from "react-dates"
+import moment from 'moment';
+import { SingleDatePicker } from 'react-dates';
 
 const now = moment();
-console.log(now.format("MMM Do, YYYY"));
+console.log(now.format('MMM Do, YYYY'));
 
 const ExpenseForm = props => {
-  const [description, setDescription] = useState('');
-  const [amount, setAmount] = useState(0);
-  const [createAt, setCreateAt] = useState(moment())
-  const [focused, setFocused] = useState(false)
-  const [note, setNote] = useState('');
-  const [error, setError] = useState({})
+  const [description, setDescription] = useState(props.expense ? props.expense.description : '');
+  const [amount, setAmount] = useState(props.expense ? (props.expense.amount / 100).toString() : 0);
+  const [createAt, setCreateAt] = useState(
+    props.expense ? moment(props.expense.createAt) : moment(),
+  );
+  const [note, setNote] = useState(props.expense ? props.expense.note : '');
+
+  const [error, setError] = useState({});
+  const [focused, setFocused] = useState(false);
 
   useEffect(() => {
     console.log('useEffect');
   });
 
-  const onChangeHandler = (e) => {
+  const onChangeHandler = e => {
     const { name, value } = e.target;
 
     if (name === 'description') {
@@ -30,35 +32,34 @@ const ExpenseForm = props => {
     }
   };
 
-  const onDateChange = (createAt) => {
-    if (createAt) setCreateAt(createAt)
-  }
+  const onDateChange = createAt => {
+    if (createAt) setCreateAt(createAt);
+  };
 
   const onFocusChange = ({ focused }) => {
     setFocused(focused);
-  }
+  };
 
-  const onSubmit = (e) => {
-    e.preventDefault()
+  const onSubmit = e => {
+    e.preventDefault();
 
     if (!description || !amount) {
       setError({
-        form: "Please provide description and amount."
-      })
+        form: 'Please provide description and amount.',
+      });
     } else {
       setError({
-        form: ""
-      })
+        form: '',
+      });
 
       props.onSubmit({
         description,
         amount: parseFloat(amount, 10) * 100,
         createAt: createAt.valueOf(),
-        note
-      })
-
+        note,
+      });
     }
-  }
+  };
 
   return (
     <div>
@@ -84,7 +85,7 @@ const ExpenseForm = props => {
           onDateChange={onDateChange}
           focused={focused}
           onFocusChange={onFocusChange}
-          id="date-picker"
+          id='expense-form-dp'
           numberOfMonths={1}
           isOutsideRange={() => false}
         />
@@ -94,7 +95,7 @@ const ExpenseForm = props => {
           value={note}
           onChange={onChangeHandler}
         ></textarea>
-        <button>Add Expense</button>
+        <button> {props.expense ? 'Edit' : 'Add'} Expense</button>
       </form>
     </div>
   );

@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './styles/components/App.scss';
 import 'react-dates/initialize';
+import 'react-dates/lib/css/_datepicker.css';
 
 import Header from './components/Header';
 import Dashboard from './views/Dashboard';
