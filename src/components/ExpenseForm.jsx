@@ -3,9 +3,9 @@ import moment from 'moment';
 import { SingleDatePicker } from 'react-dates';
 
 const now = moment();
-console.log(now.format('MMM Do, YYYY'));
+// console.log(now.format('MMM Do, YYYY'));
 
-const ExpenseForm = props => {
+export const ExpenseForm = props => {
   const [description, setDescription] = useState(props.expense ? props.expense.description : '');
   const [amount, setAmount] = useState(props.expense ? (props.expense.amount / 100).toString() : 0);
   const [createAt, setCreateAt] = useState(
