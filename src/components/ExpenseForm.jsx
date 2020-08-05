@@ -2,9 +2,6 @@ import React, { useState, useEffect } from 'react';
 import moment from 'moment';
 import { SingleDatePicker } from 'react-dates';
 
-const now = moment();
-// console.log(now.format('MMM Do, YYYY'));
-
 export const ExpenseForm = props => {
   const [description, setDescription] = useState(props.expense ? props.expense.description : '');
   const [amount, setAmount] = useState(props.expense ? (props.expense.amount / 100).toString() : 0);
@@ -26,7 +23,7 @@ export const ExpenseForm = props => {
     if (name === 'description') {
       setDescription(value);
     } else if (name === 'amount') {
-      if (!value || /^\d{1,}(.\d{0,2})?$/.test(value)) setAmount(value);
+      if (!value || /^\d{1,}(\.\d{0,2})?$/.test(value)) setAmount(value);
     } else if (name === 'note') {
       setNote(value);
     }
