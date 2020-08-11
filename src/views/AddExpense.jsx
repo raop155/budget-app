@@ -3,9 +3,9 @@ import { addExpense } from '../actions/expenses';
 import { connect } from 'react-redux';
 import ExpenseForm from '../components/ExpenseForm';
 
-const AddExpense = props => {
+export const AddExpense = props => {
   const onSubmit = expense => {
-    props.onSubmit(expense);
+    props.addExpense(expense);
     props.history.push('/');
   };
 
@@ -19,7 +19,7 @@ const AddExpense = props => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onSubmit: expense => dispatch(addExpense(expense)),
+    addExpense: expense => dispatch(addExpense(expense)),
   };
 };
 

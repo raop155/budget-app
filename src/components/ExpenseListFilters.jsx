@@ -9,37 +9,34 @@ import {
 } from '../actions/filters';
 import { DateRangePicker } from 'react-dates';
 
-const ExpenseListFilters = props => {
+export const ExpenseListFilters = (props) => {
   const [focused, setFocused] = useState(null);
 
-  const onDatesChange = ({ startDate, endDate }) => {
-    props.dispatch(setStartDate(startDate));
-    props.dispatch(setEndDate(endDate));
+  const handleDatesChange = ({ startDate, endDate }) => {
+    props.setStartDate(startDate);
+    props.setEndDate(endDate);
   };
 
-  const onFocusChange = focused => {
+  const handleFocusChange = (focused) => {
     setFocused(focused);
+  };
+
+  const handleChangeTextFilter = (e) => {
+    props.setTextFilter(e.target.value);
+  };
+
+  const handleChangeSelectFilter = (e) => {
+    if (e.target.value === 'date') {
+      props.sortByDate();
+    } else if (e.target.value === 'amount') {
+      props.sortByAmount();
+    }
   };
 
   return (
     <>
-      <input
-        type='text'
-        value={props.filters.text}
-        onChange={e => {
-          props.dispatch(setTextFilter(e.target.value));
-        }}
-      />
-      <select
-        value={props.filters.sortBy}
-        onChange={e => {
-          if (e.target.value === 'date') {
-            props.dispatch(sortByDate());
-          } else if (e.target.value === 'amount') {
-            props.dispatch(sortByAmount());
-          }
-        }}
-      >
+      <input type='text' value={props.filters.text} onChange={handleChangeTextFilter} />
+      <select value={props.filters.sortBy} onChange={handleChangeSelectFilter}>
         <option value='date'>Date</option>
         <option value='amount'>Amount</option>
       </select>
@@ -47,9 +44,9 @@ const ExpenseListFilters = props => {
       <DateRangePicker
         startDate={props.filters.startDate}
         endDate={props.filters.endDate}
-        onDatesChange={onDatesChange}
+        onDatesChange={handleDatesChange}
         focusedInput={focused}
-        onFocusChange={onFocusChange}
+        onFocusChange={handleFocusChange}
         startDateId='expense-list-filters-dp-start'
         endDateId='expense-list-filters-dp-end'
         showClearDates={true}
@@ -60,10 +57,20 @@ const ExpenseListFilters = props => {
   );
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     filters: state.filters,
   };
 };
 
-export default connect(mapStateToProps)(ExpenseListFilters);
+const mapDisptachToProps = (dispatch) => {
+  return {
+    setTextFilter: (text) => dispatch(setTextFilter(text)),
+    sortByDate: () => dispatch(sortByDate()),
+    sortByAmount: () => dispatch(sortByAmount()),
+    setStartDate: (date) => dispatch(setStartDate(date)),
+    setEndDate: (date) => dispatch(setEndDate(date)),
+  };
+};
+
+export default connect(mapStateToProps, mapDisptachToProps)(ExpenseListFilters);
