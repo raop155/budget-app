@@ -3,7 +3,7 @@
 exports[`should render Header correctly 1`] = `
 <header>
   <h1>
-    Budget App
+    Heroku Budget App - Continuous Delivery
   </h1>
   <nav>
     <NavLink
