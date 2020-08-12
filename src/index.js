@@ -6,22 +6,6 @@ import * as serviceWorker from './serviceWorker';
 import './styles/styles.scss';
 import store from './store/store';
 
-import { addExpense } from './actions/expenses';
-// import { setTextFilter } from './actions/filters';
-import selectExpenses from './selectors/expenses';
-
-store.dispatch(
-  addExpense({ description: 'Water bill', note: 'note', amount: 1000, createAt: 250 }),
-);
-store.dispatch(addExpense({ description: 'Gas bill', note: 'note', amount: 20000, createAt: 150 }));
-store.dispatch(addExpense({ description: 'Rent', note: 'note', amount: 50, createAt: 52450 }));
-
-const state = store.getState();
-
-const expenses = selectExpenses(state.expenses, state.filters);
-
-console.log(expenses);
-
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
