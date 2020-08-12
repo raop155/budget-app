@@ -1,12 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<ExpensesSummary /> should render correctly 1`] = `
-<p>
+<h1>
   Viewing 
-  3
-   expense
-  s
+   
+  expense
    totalling 
   $0.03
-</p>
+</h1>
 `;

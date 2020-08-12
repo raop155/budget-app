@@ -2,9 +2,6 @@
 
 exports[`should render ExpenseList with empty message 1`] = `
 <Fragment>
-  <h1>
-    Expense List
-  </h1>
   <p>
     No expenses
   </p>
@@ -13,9 +10,6 @@ exports[`should render ExpenseList with empty message 1`] = `
 
 exports[`should render ExpenseList with expenses 1`] = `
 <Fragment>
-  <h1>
-    Expense List
-  </h1>
   <ExpenseListItem
     amount={195}
     createAt={0}
