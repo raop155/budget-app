@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 const Header = () => {
   return (
     <header>
-      <h1>Heroku Budget App</h1>
+      <h1>Heroku Budget App - Continuous Delivery</h1>
       <nav>
         <NavLink to='/' activeClassName='is-active' exact>
           Dashboard
