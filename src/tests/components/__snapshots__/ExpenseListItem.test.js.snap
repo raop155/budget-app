@@ -11,7 +11,7 @@ exports[`should render ExpenseListItem correctly with params 1`] = `
   </Link>
   <p>
     amount: 
-    1.95
+    $1.95
      - createAt:
      
     December 31st, 1969
