@@ -15,7 +15,7 @@ export const ExpenseForm = (props) => {
 
   useEffect(() => {
     console.log('useEffect');
-  });
+  }, []);
 
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
