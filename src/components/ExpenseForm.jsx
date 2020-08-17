@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import moment from 'moment';
 import { SingleDatePicker } from 'react-dates';
 
-export const ExpenseForm = props => {
+export const ExpenseForm = (props) => {
   const [description, setDescription] = useState(props.expense ? props.expense.description : '');
   const [amount, setAmount] = useState(props.expense ? (props.expense.amount / 100).toString() : 0);
   const [createAt, setCreateAt] = useState(
@@ -17,7 +17,7 @@ export const ExpenseForm = props => {
     console.log('useEffect');
   });
 
-  const onChangeHandler = e => {
+  const onChangeHandler = (e) => {
     const { name, value } = e.target;
 
     if (name === 'description') {
@@ -29,7 +29,7 @@ export const ExpenseForm = props => {
     }
   };
 
-  const onDateChange = createAt => {
+  const onDateChange = (createAt) => {
     if (createAt) setCreateAt(createAt);
   };
 
@@ -37,7 +37,7 @@ export const ExpenseForm = props => {
     setFocused(focused);
   };
 
-  const onSubmit = e => {
+  const onSubmit = (e) => {
     e.preventDefault();
 
     if (!description || !amount) {
