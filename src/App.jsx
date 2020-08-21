@@ -1,18 +1,21 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './styles/components/App.scss';
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
 
-import Header from './components/Header';
 import Login from './views/Login';
 import Dashboard from './views/Dashboard';
 import AddExpense from './views/AddExpense';
 import EditExpense from './views/EditExpense';
 import Help from './views/Help';
 import NotFound from './views/NotFound';
+// import Test from './views/Test';
 
 import useGoogleAuth from './firebase/hooks/useGoogleAuth';
+
+import PublicRoute from './routers/PublicRouter';
+import PrivateRoute from './routers/PrivateRouter';
 
 function App() {
   const isLogin = useGoogleAuth();
@@ -20,15 +23,13 @@ function App() {
 
   return (
     <Router>
-      <Header />
       <Switch>
-        <Route path='/' exact>
-          {isLogin ? <Redirect to='/dashboard' /> : <Login />}
-        </Route>
-        <Route path='/dashboard'>{isLogin ? <Dashboard /> : <Redirect to='/' />}</Route>
-        <Route path='/create'>{isLogin ? <AddExpense /> : <Redirect to='/' />}</Route>
-        <Route path='/edit/:id'>{isLogin ? <EditExpense /> : <Redirect to='/' />}</Route>
-        <Route path='/help'>{isLogin ? <Help /> : <Redirect to='/' />}</Route>
+        <PublicRoute path='/' component={Login} exact />
+        <PrivateRoute path='/dashboard' component={Dashboard} />
+        <PrivateRoute path='/create' component={AddExpense} />
+        <PrivateRoute path='/edit/:id' component={EditExpense} />
+        <Route path='/help' component={Help} />
+        {/* <Route path='/test/:testId' component={Test} /> */}
         <Route component={NotFound} />
       </Switch>
     </Router>
