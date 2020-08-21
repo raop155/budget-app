@@ -9,14 +9,14 @@ const useGoogleAuth = () => {
 
   useEffect(() => {
     console.log('useGoogleAuth useEffect');
-    const unsubscribe = firebase.auth().onAuthStateChanged(async (user) => {
+    const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         const uid = user.uid;
-        setIsLogin(true);
         store.dispatch(login(uid));
+        setIsLogin(true);
       } else {
-        setIsLogin(false);
         store.dispatch(logout());
+        setIsLogin(false);
       }
     });
 

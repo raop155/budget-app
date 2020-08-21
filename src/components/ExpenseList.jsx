@@ -8,20 +8,16 @@ export const ExpenseList = (props) => {
   const { startSetExpenses, expenses } = props;
 
   useEffect(() => {
-    console.log('useEffect from ExpenseList');
+    console.log('useEffect ExpenseList');
     startSetExpenses();
   }, [startSetExpenses]);
 
-  useEffect(() => {
-    // console.log('expenses', expenses);
-  }, [expenses]);
-
   return (
     <>
-      {props.expenses.length === 0 ? (
+      {expenses.length === 0 ? (
         <p>No expenses</p>
       ) : (
-        props.expenses.map((expense) => {
+        expenses.map((expense) => {
           return <ExpenseListItem key={expense.id} {...expense} />;
         })
       )}

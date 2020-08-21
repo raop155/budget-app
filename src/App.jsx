@@ -10,14 +10,13 @@ import AddExpense from './views/AddExpense';
 import EditExpense from './views/EditExpense';
 import Help from './views/Help';
 import NotFound from './views/NotFound';
-// import Test from './views/Test';
 
 import useGoogleAuth from './firebase/hooks/useGoogleAuth';
 
 import PublicRoute from './routers/PublicRouter';
 import PrivateRoute from './routers/PrivateRouter';
 
-function App() {
+export const App = () => {
   const isLogin = useGoogleAuth();
   console.log('isLogin', isLogin);
 
@@ -29,11 +28,10 @@ function App() {
         <PrivateRoute path='/create' component={AddExpense} />
         <PrivateRoute path='/edit/:id' component={EditExpense} />
         <Route path='/help' component={Help} />
-        {/* <Route path='/test/:testId' component={Test} /> */}
         <Route component={NotFound} />
       </Switch>
     </Router>
   );
-}
+};
 
 export default App;
