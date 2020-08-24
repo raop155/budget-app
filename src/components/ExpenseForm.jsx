@@ -63,6 +63,7 @@ export const ExpenseForm = (props) => {
       {error.form && <p>{error.form}</p>}
       <form onSubmit={onSubmit}>
         <input
+          className='text-input'
           type='text'
           name='description'
           placeholder='Description'
@@ -71,6 +72,7 @@ export const ExpenseForm = (props) => {
           onChange={onChangeHandler}
         />
         <input
+          className='text-input'
           type='text'
           name='amount'
           placeholder='Amount'
@@ -87,6 +89,7 @@ export const ExpenseForm = (props) => {
           isOutsideRange={() => false}
         />
         <textarea
+          className='textarea'
           name='note'
           placeholder='Add a note for your expense (optional)'
           value={note}
