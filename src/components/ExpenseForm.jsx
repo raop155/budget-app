@@ -60,25 +60,36 @@ export const ExpenseForm = (props) => {
 
   return (
     <div>
-      {error.form && <p>{error.form}</p>}
-      <form onSubmit={onSubmit}>
+      {error.form && <p className='form__error'>{error.form}</p>}
+      <form className='form' onSubmit={onSubmit}>
+        <label className='label' for='description'>
+          Description
+        </label>
         <input
+          id='description'
           className='text-input'
           type='text'
           name='description'
-          placeholder='Description'
+          placeholder='Ex: Coffee'
           autoFocus
           value={description}
           onChange={onChangeHandler}
         />
+        <label className='label' for='amount'>
+          Amount
+        </label>
         <input
+          id='amount'
           className='text-input'
           type='text'
           name='amount'
-          placeholder='Amount'
+          placeholder='Ex: 2.99'
           value={amount}
           onChange={onChangeHandler}
         />
+        <label className='label' for='expense-form-dp'>
+          Date
+        </label>
         <SingleDatePicker
           date={createAt}
           onDateChange={onDateChange}
@@ -88,6 +99,7 @@ export const ExpenseForm = (props) => {
           numberOfMonths={1}
           isOutsideRange={() => false}
         />
+        <label className='label'>Note</label>
         <textarea
           className='textarea'
           name='note'
@@ -95,7 +107,9 @@ export const ExpenseForm = (props) => {
           value={note}
           onChange={onChangeHandler}
         ></textarea>
-        <button> {props.expense ? 'Edit' : 'Add'} Expense</button>
+        <div>
+          <button className='button'> {props.expense ? 'Edit' : 'Add'} Expense</button>
+        </div>
       </form>
     </div>
   );

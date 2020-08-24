@@ -7,14 +7,20 @@
 @import './components/page-header';
 @import './components/input-group';
 @import './components/inputs';
+@import './components/form';
 
 * {
   box-sizing: border-box;
 }
 
+html {
+  // overflow-y: scroll;
+  // margin-right: calc(-1 * (100vw - 100%));
+  // overflow-y: overlay;
+}
+
 html,
 body {
-  overflow-y: overlay;
   margin: 0;
   padding: 0;
 }
@@ -36,4 +42,21 @@ button {
   &:disabled {
     cursor: disabled;
   }
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  // height: 5px;
+}
+
+// ::-webkit-scrollbar-button {
+//   background: blue;
+// }
+
+::-webkit-scrollbar-track-piece {
+  background: white;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #666;
 }

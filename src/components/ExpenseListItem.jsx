@@ -5,7 +5,7 @@ import numeral from 'numeral';
 
 export const ExpenseListItem = ({ id, description, amount, createAt }) => {
   return (
-    <div>
+    <div className='content-container'>
       <Link to={`/edit/${id}`}>
         <h3>{description}</h3>
       </Link>
