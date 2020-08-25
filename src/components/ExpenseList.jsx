@@ -13,15 +13,23 @@ export const ExpenseList = (props) => {
   }, [startSetExpenses]);
 
   return (
-    <>
-      {expenses.length === 0 ? (
-        <p>No expenses</p>
-      ) : (
-        expenses.map((expense) => {
-          return <ExpenseListItem key={expense.id} {...expense} />;
-        })
-      )}
-    </>
+    <div className='content-container'>
+      <div className='list-header'>
+        <div>Expense</div>
+        <div className='show-desktop'>Amount</div>
+      </div>
+      <div className='list-body'>
+        {expenses.length === 0 ? (
+          <div className='list-item list-item--message'>
+            <span>No expenses</span>
+          </div>
+        ) : (
+          expenses.map((expense) => {
+            return <ExpenseListItem key={expense.id} {...expense} />;
+          })
+        )}
+      </div>
+    </div>
   );
 };
 

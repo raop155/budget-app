@@ -62,7 +62,7 @@ export const ExpenseForm = (props) => {
     <div>
       {error.form && <p className='form__error'>{error.form}</p>}
       <form className='form' onSubmit={onSubmit}>
-        <label className='label' for='description'>
+        <label className='label' htmlFor='description'>
           Description
         </label>
         <input
@@ -75,7 +75,7 @@ export const ExpenseForm = (props) => {
           value={description}
           onChange={onChangeHandler}
         />
-        <label className='label' for='amount'>
+        <label className='label' htmlFor='amount'>
           Amount
         </label>
         <input
@@ -87,7 +87,7 @@ export const ExpenseForm = (props) => {
           value={amount}
           onChange={onChangeHandler}
         />
-        <label className='label' for='expense-form-dp'>
+        <label className='label' htmlFor='expense-form-dp'>
           Date
         </label>
         <SingleDatePicker
@@ -103,7 +103,7 @@ export const ExpenseForm = (props) => {
         <textarea
           className='textarea'
           name='note'
-          placeholder='Add a note for your expense (optional)'
+          placeholder='Add a note htmlFor your expense (optional)'
           value={note}
           onChange={onChangeHandler}
         ></textarea>
