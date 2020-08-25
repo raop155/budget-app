@@ -64,7 +64,7 @@ export const EditExpense = (props) => {
           <h1 className='page-header__title'>Edit Expense</h1>
         </div>
       </div>
-      <div className='content-container'>
+      <div className='content-container content-container--mb'>
         <ExpenseForm expense={props.expense} onSubmit={onSubmit} />
         {/* <button className='button button--secondary' onClick={handleRemoveExpense}> */}
         <button className='button button--secondary' onClick={handleOpenModal}>
